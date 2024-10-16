@@ -2,12 +2,22 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import LoginPage from '../components/LoginPage.vue';
 import HomePage from '../components/HomePage.vue';
 import SignupPage from '../components/SignupPage.vue';
+import ViewPage1 from "../views/ViewPage1.vue";
+import ViewPage2 from "../views/ViewPage2.vue";
 
 const routes = [
     { path: '/', redirect: '/home' },
     { path: '/login', component: LoginPage },
-    { path: '/home', component: HomePage, meta: { requiresAuth: true } },
     { path: '/signup', component: SignupPage },
+    {
+        path: '/home',
+        component: HomePage,
+        meta: { requiresAuth: true } ,
+        children: [
+            { path: 'view1', component: ViewPage1 },
+            { path: 'view2', component: ViewPage2 },
+        ]
+    },
 ];
 
 const router = createRouter({

@@ -1,7 +1,17 @@
 <template>
-  <div class="home">
-    <h2>Welcome to the Home Page</h2>
-    <p>This is the main dashboard after successful login.</p>
+  <div class="container">
+    <aside class="sidebar">
+      <h3>导航</h3>
+      <ul>
+        <li><router-link to="/home/view1">View 1</router-link></li>
+        <li><router-link to="/home/view2">View 2</router-link></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <!-- 显示对应的路由视图 -->
+      <router-view />
+    </main>
   </div>
   <button @click="handleLogout">登出</button>
 </template>
@@ -18,3 +28,7 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+@import "../css/home.css";
+</style>
