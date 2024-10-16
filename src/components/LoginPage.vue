@@ -21,6 +21,7 @@
 
 <script>
 import axios from 'axios';
+import Cookie from 'js-cookie';
 import {serverAddress} from "../../global";
 
 export default {
@@ -52,7 +53,7 @@ export default {
 
           // 登录成功，设置登录状态
           localStorage.setItem('isAuthenticated', 'true');
-          localStorage.setItem('token', response.data.data.token)
+          Cookie.set('token', response.data.data.token);
           // 跳转到主界面
           this.$router.push('/home');
         } else {

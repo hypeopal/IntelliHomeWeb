@@ -13,7 +13,6 @@ export default {
   methods: {
     handleLogout() {
       localStorage.removeItem('isAuthenticated');
-      localStorage.removeItem('token');
       this.$router.push('/login');
     }
   }
