@@ -53,6 +53,7 @@ export default {
 
           // 登录成功，设置登录状态
           localStorage.setItem('isAuthenticated', 'true');
+          localStorage.setItem('username', this.username);
           Cookie.set('token', response.data.data.token);
           // 跳转到主界面
           this.$router.push('/home');

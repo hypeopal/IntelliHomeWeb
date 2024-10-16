@@ -4,14 +4,14 @@
     <form @submit.prevent="handleSignup">
       <div class="input-group">
         <label for="username" class="login-label">用户名：</label>
-        <input v-model="username" type="text" id="username" class="login-input" />
+        <input v-model="username" type="text" id="username" class="login-input"/>
       </div>
       <div class="input-group">
         <label for="password" class="login-label">密码：</label>
-        <input v-model="password" type="password" id="password" class="login-input" />
+        <input v-model="password" type="password" id="password" class="login-input"/>
       </div>
       <div class="input-group">
-        <label for="password" class="login-label" >确认密码：</label>
+        <label for="password" class="login-label">确认密码：</label>
         <input v-model="confirmPassword" type="password" id="password" class="login-input"/>
       </div>
       <button type="submit" class="login-button" :disabled="isLoading">注册</button>
