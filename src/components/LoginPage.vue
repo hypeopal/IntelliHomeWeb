@@ -12,8 +12,10 @@
       </div>
       <button type="submit" class="login-button" :disabled="isLoading">登录</button>
     </form>
-    <div style="text-align: center">没有账号？
+    <div>
+      <span>没有账号？</span>
       <router-link to="/signup">立即注册</router-link>
+      <router-link to="/findpassword" style="margin-left: 160px">找回密码</router-link>
     </div>
     <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
   </div>
@@ -23,6 +25,7 @@
 import axios from 'axios';
 import Cookie from 'js-cookie';
 import {serverAddress} from "../../global";
+const oneHour = new Date(new Date().getHours() + 1);
 
 export default {
   data() {
@@ -30,7 +33,7 @@ export default {
       username: '',
       password: '',
       errorMessage: '',
-      isLoading: false
+      isLoading: false,
     };
   },
   methods: {
@@ -54,7 +57,7 @@ export default {
           // 登录成功，设置登录状态
           localStorage.setItem('isAuthenticated', 'true');
           localStorage.setItem('username', this.username);
-          Cookie.set('token', response.data.data.token);
+          Cookie.set('token', response.data.data.token, {expires: oneHour, httpOnly: true});
           // 跳转到主界面
           this.$router.push('/home');
         } else {
