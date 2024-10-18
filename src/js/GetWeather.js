@@ -11,15 +11,25 @@ export async function getCityId(city) {
     }
 }
 
-export async function getTemp(cityId) {
+export async function getWeather7d(cityId) {
     try {
         const response = await axios.get(`https://devapi.qweather.com/v7/weather/7d?location=${cityId}&key=${weatherKey}`);
-        let weather7d = response.data.daily.slice(0, 7).map(day => [day.tempMax, day.tempMin]);
-
-        //return response.data;
-        console.log(weather7d);
-        return weather7d;
+        //console.log(response.data);
+        return response.data;
     } catch (error) {
         console.log(error);
     }
+}
+
+export async function getTemp(cityId) {
+    const weather7d = await getWeather7d(cityId);
+    return weather7d.daily.slice(0, 7).map(day => [day.tempMax, day.tempMin]);
+}
+
+export async function getWeatherToday(cityId) {
+    const weather7d = await getWeather7d(cityId);
+    return {
+        weather: weather7d.daily[0].textDay,
+        temp: [weather7d.daily[0].tempMin, weather7d.daily[0].tempMax]
+    };
 }

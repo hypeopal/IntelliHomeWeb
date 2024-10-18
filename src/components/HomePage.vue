@@ -1,11 +1,16 @@
 <template>
   <div class="container">
     <header class="status-bar">
-      <div class="user-info">
-        用户：{{ currentUser }}
+      <div class="user-info" @click="toggleMenu">
+         用户：{{ currentUser }}
+        <ul v-if="isMenuVisible" class="dropdown-menu">
+          <li><router-link class="menu-selector" to="/profile">个人中心</router-link></li>
+          <li><router-link class="menu-selector" to="/settings">设置</router-link></li>
+        </ul>
       </div>
       <div class="date-info">
-        当前时间：{{ currentDate }}
+        今日天气：{{ weather }} | 当前时间：{{ currentDate }}
+        <button @click="handleLogout" class="logout-button">登出</button>
       </div>
     </header>
 
@@ -25,20 +30,25 @@
       </main>
     </div>
   </div>
-  <button @click="handleLogout">登出</button>
 </template>
 
 <script>
+//import {getCityId, getWeatherToday} from "@/js/GetWeather";
 
 export default {
   name: 'HomePage',
   data() {
     return {
       currentUser: '',
-      currentDate: ''
+      currentDate: '',
+      isMenuVisible: false,
+      weather: '晴 25°C',
     };
   },
-  created() {
+  async created() {
+    // const cityId = await getCityId('成都');
+    // const weatherToday = await getWeatherToday(cityId);
+    // this.weather = `${weatherToday.weather} ${weatherToday.temp[0]}-${weatherToday.temp[1]}°C`;
     this.currentUser = localStorage.getItem('username');
     this.updateDate();
     setInterval(this.updateDate, 1000);
@@ -58,6 +68,9 @@ export default {
       const min = String(today.getMinutes()).padStart(2, '0');
       const ss = String(today.getSeconds()).padStart(2, '0');
       this.currentDate = `${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
+    },
+    toggleMenu() {
+      this.isMenuVisible = !this.isMenuVisible;
     }
   }
 };

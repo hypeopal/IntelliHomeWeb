@@ -54,3 +54,70 @@
     flex: 1;
     padding: 20px;
 }
+
+
+.dropdown-menu {
+    position: absolute;
+    top: 50px;
+    left: 22px;
+    background-color: white;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+.dropdown-menu li {
+    padding: 5px 0;
+}
+
+.menu-selector {
+    text-decoration: none; /* 去掉下划线 */
+    color: black; /* 设置为黑色，或根据需要调整 */
+}
+
+.menu-selector:hover {
+    color: #007bff; /* 鼠标悬停时颜色变化 */
+}
+
+.date-info {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info {
+    cursor: pointer;
+    user-select: none;
+    background-color: white;
+    border-radius: 5px;
+    color: #007bff;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid #007bff;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 15px;
+}
+
+.user-info:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.logout-button {
+    background-color: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #007bff;
+    color: white;
+}

@@ -4,7 +4,7 @@
 
 <script>
 import * as echarts from 'echarts';
-//import {getCityId, getTemp} from "@/js/GetWeather";
+import {getCityId, getTemp} from "@/js/GetWeather";
 
 export default {
   name: "WeatherChart",
@@ -118,6 +118,10 @@ export default {
         ]
       };
       chart.setOption(option);
+
+      window.addEventListener('resize', () => {
+        chart.resize();
+      });
     },
   }
 };
