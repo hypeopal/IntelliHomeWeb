@@ -1,12 +1,8 @@
 <template>
   <div class="container">
     <header class="status-bar">
-      <div class="user-info" @click="toggleMenu">
-         用户：{{ currentUser }}
-        <ul v-if="isMenuVisible" class="dropdown-menu">
-          <li><router-link class="menu-selector" to="/profile">个人中心</router-link></li>
-          <li><router-link class="menu-selector" to="/settings">设置</router-link></li>
-        </ul>
+      <div class="logo" style="cursor: pointer" @click="goToHomePage">
+        Intelli Home
       </div>
       <div class="date-info">
         当前天气：{{ weather }} | 当前时间：{{ currentDate }}
@@ -27,6 +23,16 @@
             <router-link to="/home/view3">View 3</router-link>
           </li>
         </ul>
+        <div class="user-info-section">
+          <hr class="menu-divider" />
+          <ul class="menu-options">
+            <li><router-link class="menu-selector" to="/profile">个人中心</router-link></li>
+            <li><router-link class="menu-selector" to="/settings">设置</router-link></li>
+          </ul>
+          <div class="user-info">
+            用户：{{ currentUser }}
+          </div>
+        </div>
       </aside>
       <main class="main-content">
         <router-view/>
@@ -44,7 +50,6 @@ export default {
     return {
       currentUser: '',
       currentDate: '',
-      isMenuVisible: false,
       weather: '晴 25°C',
     };
   },
@@ -55,12 +60,6 @@ export default {
     this.currentUser = localStorage.getItem('username');
     this.updateDate();
     setInterval(this.updateDate, 1000);
-  },
-  mounted() {
-    document.addEventListener('click', this.handleClickOutside);
-  },
-  beforeUnmount() {
-    document.removeEventListener('click', this.handleClickOutside);
   },
   methods: {
     handleLogout() {
@@ -78,18 +77,9 @@ export default {
       const ss = String(today.getSeconds()).padStart(2, '0');
       this.currentDate = `${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
     },
-    toggleMenu() {
-      this.isMenuVisible = !this.isMenuVisible;
-    },
-    handleClickOutside(event) {
-      const menu = this.$el.querySelector('.dropdown-menu');
-      const userInfo = this.$el.querySelector('.user-info');
-
-      // 检查点击是否在菜单或者用户名上，如果不在则关闭菜单
-      if (this.isMenuVisible && menu && !menu.contains(event.target) && !userInfo.contains(event.target)) {
-        this.isMenuVisible = false;
-      }
-    },
+    goToHomePage() {
+      this.$router.push('/');
+    }
   }
 };
 </script>

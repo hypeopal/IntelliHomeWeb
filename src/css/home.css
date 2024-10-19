@@ -15,6 +15,17 @@
     border-radius: 5px;
 }
 
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+.date-info {
+
+}
+
 .content-wrapper {
     flex: 1;
     display: flex;
@@ -55,55 +66,32 @@
     padding: 20px;
 }
 
-
-.dropdown-menu {
-    position: absolute;
-    top: 50px;
-    left: 22px;
-    background-color: white;
-    border: 1px solid #ccc;
-    list-style: none;
-    padding: 10px;
-    margin: 0;
-    border-radius: 5px;
-}
-
-.dropdown-menu li {
-    padding: 5px 0;
-}
-
-.menu-selector {
-    text-decoration: none; /* 去掉下划线 */
-    color: black; /* 设置为黑色，或根据需要调整 */
-}
-
-.menu-selector:hover {
-    color: #007bff; /* 鼠标悬停时颜色变化 */
-}
-
-.date-info {
-    font-size: 14px;
+.user-info-section {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
 }
 
 .user-info {
-    cursor: pointer;
-    user-select: none;
-    background-color: white;
-    border-radius: 5px;
-    color: #007bff;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 1px solid #007bff;
-    transition: background-color 0.3s, color 0.3s;
-    font-size: 15px;
+    font-weight: bold;
 }
 
-.user-info:hover {
-    background-color: #007bff;
-    color: white;
+.menu-divider {
+    margin-bottom: -15px;
+    margin-top: 380px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    width: 100%;
+}
+
+.menu-options {
+    list-style: none;
+    padding: 0;
+    margin-bottom: -2px;
+}
+
+.menu-options li {
+    margin: 5px 0;
 }
 
 .logout-button {
@@ -114,6 +102,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    margin-left: 3px;
     transition: background-color 0.3s, color 0.3s;
 }
 
