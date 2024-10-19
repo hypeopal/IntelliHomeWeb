@@ -5,6 +5,7 @@ import SignupPage from '../components/SignupPage.vue';
 import ViewPage1 from "../views/ViewPage1.vue";
 import ViewPage2 from "../views/ViewPage2.vue";
 import FindPassword from "../components/FindPassword.vue";
+import ViewPage3 from "../views/ViewPage3.vue";
 
 const routes = [
     {path: '/', redirect: '/home/view1'},
@@ -18,6 +19,7 @@ const routes = [
         children: [
             {path: 'view1', component: ViewPage1},
             {path: 'view2', component: ViewPage2},
+            {path: 'view3', component: ViewPage3}
         ]
     },
 ];

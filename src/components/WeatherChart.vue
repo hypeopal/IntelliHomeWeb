@@ -1,10 +1,10 @@
 <template>
-  <div ref="weatherChart" style="width: 40%; height: 250px"></div>
+  <div ref="weatherChart" class="chart"></div>
 </template>
 
 <script>
 import * as echarts from 'echarts';
-import {getCityId, getTemp} from "@/js/GetWeather";
+//import {getCityId, getTemp} from "@/js/GetWeather";
 
 export default {
   name: "WeatherChart",
@@ -21,6 +21,7 @@ export default {
   },
   methods: {
     async initChart() {
+      this.DateList = this.generateDayList();
       // 部署时再动态获取，节约api资源
       // try {
       //   const cityId = await getCityId(this.City);
@@ -123,10 +124,25 @@ export default {
         chart.resize();
       });
     },
+    generateDayList() {
+      const today = new Date();
+      return Array.from({ length: 7 }, (_, i) => {
+        let futureDate = new Date(today);
+        futureDate.setDate(today.getDate() + i);
+        return futureDate.getDate(); // 返回日期部分
+      });
+    },
   }
 };
 </script>
 
 <style scoped>
-
+.chart {
+  width: 40%;
+  height: 220px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px 10px 0;
+}
 </style>

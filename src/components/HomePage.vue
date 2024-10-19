@@ -9,7 +9,7 @@
         </ul>
       </div>
       <div class="date-info">
-        今日天气：{{ weather }} | 当前时间：{{ currentDate }}
+        当前天气：{{ weather }} | 当前时间：{{ currentDate }}
         <button @click="handleLogout" class="logout-button">登出</button>
       </div>
     </header>
@@ -23,6 +23,9 @@
           <li>
             <router-link to="/home/view2">View 2</router-link>
           </li>
+          <li>
+            <router-link to="/home/view3">View 3</router-link>
+          </li>
         </ul>
       </aside>
       <main class="main-content">
@@ -33,7 +36,7 @@
 </template>
 
 <script>
-//import {getCityId, getWeatherToday} from "@/js/GetWeather";
+//import {getCityId, getWeatherNow} from "@/js/GetWeather";
 
 export default {
   name: 'HomePage',
@@ -47,11 +50,17 @@ export default {
   },
   async created() {
     // const cityId = await getCityId('成都');
-    // const weatherToday = await getWeatherToday(cityId);
-    // this.weather = `${weatherToday.weather} ${weatherToday.temp[0]}-${weatherToday.temp[1]}°C`;
+    // const weatherNow = await getWeatherNow(cityId);
+    // this.weather = `${weatherNow.weather} ${weatherNow.temp}°C`;
     this.currentUser = localStorage.getItem('username');
     this.updateDate();
     setInterval(this.updateDate, 1000);
+  },
+  mounted() {
+    document.addEventListener('click', this.handleClickOutside);
+  },
+  beforeUnmount() {
+    document.removeEventListener('click', this.handleClickOutside);
   },
   methods: {
     handleLogout() {
@@ -71,7 +80,16 @@ export default {
     },
     toggleMenu() {
       this.isMenuVisible = !this.isMenuVisible;
-    }
+    },
+    handleClickOutside(event) {
+      const menu = this.$el.querySelector('.dropdown-menu');
+      const userInfo = this.$el.querySelector('.user-info');
+
+      // 检查点击是否在菜单或者用户名上，如果不在则关闭菜单
+      if (this.isMenuVisible && menu && !menu.contains(event.target) && !userInfo.contains(event.target)) {
+        this.isMenuVisible = false;
+      }
+    },
   }
 };
 </script>

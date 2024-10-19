@@ -59,7 +59,7 @@ export default {
           localStorage.setItem('username', this.username);
           Cookie.set('token', response.data.data.token, {expires: oneHour, httpOnly: true});
           // 跳转到主界面
-          this.$router.push('/home');
+          this.$router.push('/');
         } else {
           this.errorMessage = response.data.message;
         }
