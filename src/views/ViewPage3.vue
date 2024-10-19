@@ -29,7 +29,7 @@
     <div class="devices-section" v-if="selectedArea && selectedArea.devices.length > 0">
       <h2>Devices in {{ selectedArea.area_name }}:</h2>
       <div class="devices-container">
-        <div class="device-item" v-for="device in selectedArea.devices" :key="device.device_id">
+        <div class="device-item" v-for="device in selectedArea.devices" :key="device.device_id" @click="openDeviceControl(device)">
           <h3>{{ device.device_name }}</h3>
           <p><strong>MAC:</strong> {{ device.efuse_mac }}</p>
           <p><strong>Model:</strong> {{ device.chip_model }}</p>
@@ -38,9 +38,30 @@
       </div>
     </div>
 
-    <!-- 提示无设备 -->
-    <div class="no-devices" v-if="selectedArea && selectedArea.devices.length === 0">
-      <p>No devices found in this area.</p>
+    <div v-if="showControlModal" class="modal-overlay" @click="closeControlModal">
+      <div class="device-control-modal" @click.stop>
+          <h2>Control {{ currentDevice.device_name }}</h2>
+
+          <!-- 根据设备类型展示不同的控制选项 -->
+          <div v-if="currentDevice.device_type.type_name === 'light'">
+            <p>Control Light:</p>
+            <button @click="toggleLight">Toggle Light</button>
+          </div>
+
+          <div v-if="currentDevice.device_type.type_name === 'air condition'">
+            <p>Control Air Condition:</p>
+            <label>Temperature:</label>
+            <input type="number" v-model="airConditionTemp" />
+            <button @click="setAirConditionTemp">Set Temperature</button>
+          </div>
+
+          <!-- 关闭弹窗 -->
+          <button class="close-button" @click="closeControlModal">Close</button>
+      </div>
+    </div>
+
+    <div class="message" v-if="message">
+      <p>{{ message }}</p>
     </div>
   </div>
 </template>
@@ -52,9 +73,13 @@ import {serverAddress} from "../../global";
 export default {
   data() {
     return {
+      message: '',
       houses: [],  // 保存从后端获取的houses数据
       selectedHouseId: null,  // 选中的house_id
       selectedAreaId: null,  // 选中的area_id
+      showControlModal: false,  // 控制弹窗是否显示
+      currentDevice: null,  // 当前控制的设备
+      airConditionTemp: 0,  // 空调温度
     };
   },
   computed: {
@@ -79,10 +104,16 @@ export default {
           this.selectedHouseId = this.houses[0].house_id;
           if (this.selectedHouse.areas_devices.length > 0) {
             this.selectedAreaId = this.selectedHouse.areas_devices[0].area_id;
+          } else {
+            this.selectedAreaId = null;
+            this.message = '您还未添加区域';
           }
+        } else {
+          this.message = '您还未添加家庭';
         }
       } catch (error) {
         console.error('Error fetching data:', error);
+        this.message = '暂时无法获取设备，请稍后再试';
       }
     },
     onHouseChange() {
@@ -94,6 +125,42 @@ export default {
     },
     onAreaChange() {
 
+    },
+    // 打开设备控制弹窗
+    openDeviceControl(device) {
+      this.currentDevice = device;
+      this.showControlModal = true;
+    },
+    // 关闭控制弹窗
+    closeControlModal() {
+      this.showControlModal = false;
+      this.currentDevice = null;
+    },
+    // 控制灯的开关
+    async toggleLight() {
+      try {
+        const response = await axios.post('https://your-api-endpoint.com/control-light', {
+          device_id: this.currentDevice.device_id,
+          action: 'toggle'
+        });
+        console.log('Light toggled:', response.data);
+        this.closeControlModal();
+      } catch (error) {
+        console.error('Error toggling light:', error);
+      }
+    },
+    // 设置空调温度
+    async setAirConditionTemp() {
+      try {
+        const response = await axios.post('https://your-api-endpoint.com/control-air-condition', {
+          device_id: this.currentDevice.device_id,
+          temperature: this.airConditionTemp
+        });
+        console.log('Temperature set:', response.data);
+        this.closeControlModal();
+      } catch (error) {
+        console.error('Error setting temperature:', error);
+      }
     }
   }
 };
