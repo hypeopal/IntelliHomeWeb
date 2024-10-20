@@ -38,6 +38,7 @@ export async function getWeatherNow(cityId) {
     const response = await axios.get(`https://devapi.qweather.com/v7/weather/now?location=${cityId}&key=${weatherKey}`);
     return {
         weather: response.data.now.text,
-        temp: response.data.now.temp
+        temp: response.data.now.temp,
+        icon: response.data.now.icon
     };
 }

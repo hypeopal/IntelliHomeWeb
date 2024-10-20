@@ -110,3 +110,8 @@
     background-color: #007bff;
     color: white;
 }
+
+.date-info img {
+    filter: invert(100%) brightness(100%);
+    margin-bottom: -2.5px;
+}

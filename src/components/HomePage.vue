@@ -5,7 +5,9 @@
         Intelli Home
       </div>
       <div class="date-info">
-        当前天气：{{ weather }} | 当前时间：{{ currentDate }}
+        当前天气：
+        <img :src="require(`qweather-icons/icons/${weatherIcon}.svg`)" alt="icon"/>
+         {{ weather }} | 当前时间：{{ currentDate }}
         <button @click="handleLogout" class="logout-button">登出</button>
       </div>
     </header>
@@ -51,12 +53,14 @@ export default {
       currentUser: '',
       currentDate: '',
       weather: '晴 25°C',
+      weatherIcon: '100',
     };
   },
   async created() {
     // const cityId = await getCityId('成都');
     // const weatherNow = await getWeatherNow(cityId);
     // this.weather = `${weatherNow.weather} ${weatherNow.temp}°C`;
+    // this.weatherIcon = `${weatherNow.icon}`;
     this.currentUser = localStorage.getItem('username');
     this.updateDate();
     setInterval(this.updateDate, 1000);

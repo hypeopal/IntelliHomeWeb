@@ -5,7 +5,7 @@
     <!-- 横向排列的菜单选择 -->
     <div class="selectors">
       <!-- 菜单选择 House -->
-      <div class="select-container">
+      <div class="select-container" v-if="houses.length > 0">
         <label for="house-select">Select House:</label>
         <select id="house-select" v-model="selectedHouseId" @change="onHouseChange">
           <option v-for="house in houses" :key="house.house_id" :value="house.house_id">
