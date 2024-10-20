@@ -34,7 +34,7 @@ export default {
       const chart = echarts.init(this.$refs.weatherChart);
       const option = {
         title: {
-          text: `${this.City}天气 `
+          text: `${this.City}气温 `
         },
         tooltip: {
           trigger: 'axis'

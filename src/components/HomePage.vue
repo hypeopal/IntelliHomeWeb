@@ -1,8 +1,9 @@
 <template>
   <div class="container">
     <header class="status-bar">
-      <div class="logo" style="cursor: pointer" @click="goToHomePage">
-        Intelli Home
+      <div class="header-left">
+        <button @click="toggleSidebar" class="toggle-sidebar-btn">≡</button>
+        <div class="logo" style="cursor: pointer" @click="goToHomePage">Intelli Home</div>
       </div>
       <div class="date-info">
         当前天气：
@@ -13,26 +14,27 @@
     </header>
 
     <div class="content-wrapper">
-      <aside class="sidebar">
+      <aside :class="['sidebar', { 'sidebar-hidden': !isSidebarVisible }]">
         <ul>
           <li>
-            <router-link to="/home/view1">View 1</router-link>
+            <router-link to="/home/view1" active-class="active-link"><span class="sidebar-text">View 1</span></router-link>
           </li>
           <li>
-            <router-link to="/home/view2">View 2</router-link>
+            <router-link to="/home/view2" active-class="active-link"><span class="sidebar-text">View 2</span></router-link>
           </li>
           <li>
-            <router-link to="/home/view3">View 3</router-link>
+            <router-link to="/home/view3" active-class="active-link"><span class="sidebar-text">View 3</span></router-link>
           </li>
         </ul>
         <div class="user-info-section">
           <hr class="menu-divider" />
           <ul class="menu-options">
-            <li><router-link class="menu-selector" to="/profile">个人中心</router-link></li>
-            <li><router-link class="menu-selector" to="/settings">设置</router-link></li>
+            <li><router-link to="/home/profile" active-class="active-link"><span class="sidebar-text">个人中心</span></router-link></li>
+            <li><router-link to="/home/setting" active-class="active-link"><span class="sidebar-text">设置</span></router-link></li>
           </ul>
           <div class="user-info">
-            用户：{{ currentUser }}
+            <img src="https://i.loli.net/2017/08/21/599a521472424.jpg" alt="user" style="height: 35px; border-radius: 50%; margin-right: 5px">
+            {{ currentUser }}
           </div>
         </div>
       </aside>
@@ -50,10 +52,11 @@ export default {
   name: 'HomePage',
   data() {
     return {
-      currentUser: '',
+      currentUser: localStorage.getItem('username'),
       currentDate: '',
       weather: '晴 25°C',
       weatherIcon: '100',
+      isSidebarVisible: true,
     };
   },
   async created() {
@@ -61,7 +64,6 @@ export default {
     // const weatherNow = await getWeatherNow(cityId);
     // this.weather = `${weatherNow.weather} ${weatherNow.temp}°C`;
     // this.weatherIcon = `${weatherNow.icon}`;
-    this.currentUser = localStorage.getItem('username');
     this.updateDate();
     setInterval(this.updateDate, 1000);
   },
@@ -83,7 +85,10 @@ export default {
     },
     goToHomePage() {
       this.$router.push('/');
-    }
+    },
+    toggleSidebar() {
+      this.isSidebarVisible = !this.isSidebarVisible;
+    },
   }
 };
 </script>
