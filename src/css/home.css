@@ -1,3 +1,13 @@
+/*
+Here I make all the default padding and
+margin to be zero to avoid flex display bug?
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
 .container {
     display: flex;
     flex-direction: column;
@@ -10,6 +20,8 @@
     align-items: center;
     background-color: #007bff;
     color: white;
+
+    margin: 5px 5px 5px 5px;
     padding: 10px 20px;
     font-size: 16px;
     height: 25px;
@@ -50,45 +62,7 @@
     display: flex;
 }
 
-.sidebar {
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #f4f4f4;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    text-align: center;
-    transition: width 0.3s ease, opacity 0.3s ease;
-    overflow: hidden;
-}
 
-.sidebar-hidden {
-    width: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.sidebar-hidden li {
-    justify-content: center;
-    opacity: 0;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar li {
-    margin: 10px 0;
-}
-
-.sidebar a {
-    text-decoration: none;
-    color: #333;
-    padding: 5px;
-    border-radius: 5px;
-}
 
 .main-content {
     flex: 1;
@@ -155,16 +129,68 @@
     margin-bottom: -2.5px;
 }
 
-.active-link {
-    background-color: #007bff;
-    color: white;
-    width: 100%;
+
+.sidebar {
+    width: 150px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    background-color: #f4f4f4;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.sidebar-hidden {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.sidebar-hidden li {
+    justify-content: center;
+    opacity: 0;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+    list-style-type: none;
+
+    margin-top: 20px;
+}
+
+.sidebar li {
+    display: flex;
     align-items: center;
-    padding: 10px 0;
+    justify-content: center;
+    height: 50px;
+}
+
+.sidebar a {
+    height: 80%;
+    width: 75%;
+
+    text-decoration: none;
+    border-radius: 5px;
+    align-content: center;
+}
+
+.sidebar a span {
+    text-decoration: none;
+    color: #333;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.active-link {
+    background-color: #007bff;
+    align-items: center;
     box-sizing: border-box;
-    border-radius: 0;
     align-content: center;
 }
 
