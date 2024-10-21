@@ -63,7 +63,6 @@ margin to be zero to avoid flex display bug?
 }
 
 
-
 .main-content {
     flex: 1;
     padding: 20px;
@@ -71,8 +70,8 @@ margin to be zero to avoid flex display bug?
 }
 
 .user-info-section {
-    display: flex;
-    flex-direction: column;
+    /*display: flex;*/
+    /*flex-direction: column;*/
 }
 
 .sidebar-hidden .user-info-section {
@@ -95,17 +94,10 @@ margin to be zero to avoid flex display bug?
     width: 100%;
 }
 
-.menu-options {
-    list-style: none;
-    padding: 10px;
-    margin-top: 0;
-    margin-bottom: 0;
-}
 
-.menu-options li {
-    margin: 3px 0;
-    padding: 2px
-}
+/*.menu-options li {*/
+
+/*}*/
 
 .logout-button {
     background-color: white;
@@ -154,7 +146,7 @@ margin to be zero to avoid flex display bug?
     opacity: 0;
 }
 
-.sidebar ul {
+.sidebar .menu-functions {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -164,7 +156,7 @@ margin to be zero to avoid flex display bug?
     margin-top: 20px;
 }
 
-.sidebar li {
+.sidebar .menu-functions li {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -178,6 +170,10 @@ margin to be zero to avoid flex display bug?
     text-decoration: none;
     border-radius: 5px;
     align-content: center;
+}
+
+.sidebar a:hover {
+    background-color: #cccccc;
 }
 
 .sidebar a span {
@@ -196,4 +192,23 @@ margin to be zero to avoid flex display bug?
 
 .active-link .sidebar-text {
     color: white; /* 图标和文字的选中颜色 */
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    /*height: 100px;*/
+    margin-top: 12px;
+}
+
+.menu-options li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.menu-options a {
+
 }

@@ -15,7 +15,7 @@
 
     <div class="content-wrapper">
       <aside :class="['sidebar', { 'sidebar-hidden': !isSidebarVisible }]">
-        <ul>
+        <ul class="menu-functions">
           <li>
             <router-link to="/home/view1" active-class="active-link"><span class="sidebar-text">View 1</span></router-link>
           </li>
