@@ -4,7 +4,7 @@
 
 <script>
 import * as echarts from 'echarts';
-//import {getCityId, getTemp} from "@/js/GetWeather";
+import {getCityId, getTemp} from "@/js/GetWeather";
 
 export default {
   name: "WeatherChart",
@@ -22,15 +22,28 @@ export default {
   methods: {
     async initChart() {
       this.DateList = this.generateDayList();
-      // 部署时再动态获取，节约api资源
-      // try {
-      //   const cityId = await getCityId(this.City);
-      //   const tempList = await getTemp(cityId);
-      //   this.HighestTemp = tempList.map(day => day[0]); // 提取最高温
-      //   this.LowestTemp = tempList.map(day => day[1]); // 提取最低温
-      // } catch (e) {
-      //   console.log(e);
-      // }
+      if (localStorage.getItem('lastModified') === this.DateList[0].toString()) {
+        try {
+          this.HighestTemp = JSON.parse(localStorage.getItem('highTemp')) || this.HighestTemp;
+          this.LowestTemp = JSON.parse(localStorage.getItem('lowTemp')) || this.LowestTemp;
+        } catch (e) {
+          console.log('读取本地数据出错', e);
+        }
+      } else {
+        try {
+          const cityId = await getCityId(this.City);
+          const tempList = await getTemp(cityId);
+          console.log("更新气温");
+          this.HighestTemp = tempList.map(day => day[0]); // 提取最高温
+          this.LowestTemp = tempList.map(day => day[1]); // 提取最低温
+          //保存数据，每日更新一次
+          localStorage.setItem('highTemp', JSON.stringify(this.HighestTemp));
+          localStorage.setItem('lowTemp', JSON.stringify(this.LowestTemp));
+          localStorage.setItem('lastModified', this.DateList[0]);
+        } catch (e) {
+          console.log(e);
+        }
+      }
       const chart = echarts.init(this.$refs.weatherChart);
       const option = {
         title: {
