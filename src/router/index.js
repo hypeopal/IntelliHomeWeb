@@ -1,19 +1,26 @@
 import {createRouter, createWebHashHistory} from 'vue-router';
-import LoginPage from '../components/LoginPage.vue';
+import AuthPage from '../components/AuthPage.vue';
 import HomePage from '../components/HomePage.vue';
-import SignupPage from '../components/SignupPage.vue';
+import SignupComp from '../components/SignupComp.vue';
 import OverviewPage from "../views/OverviewPage.vue";
 import ScenePage from "../views/ScenePage.vue";
 import FindPassword from "../components/FindPassword.vue";
 import DevicePage from "../views/DevicePage.vue";
 import ProfilePage from "../views/ProfilePage.vue";
 import SettingPage from "../views/SettingPage.vue";
+import LoginComp from "../components/LoginComp.vue";
 
 const routes = [
     {path: '/', redirect: '/home/overview'},
-    {path: '/login', component: LoginPage},
-    {path: '/signup', component: SignupPage},
-    {path: '/findpassword', component: FindPassword},
+    {
+        path: '/auth',
+        component: AuthPage,
+        children: [
+            {path: 'login', component: LoginComp},
+            {path: 'signup', component: SignupComp},
+            {path: 'findpassword', component: FindPassword},
+        ]
+    },
     {
         path: '/home',
         component: HomePage,
@@ -37,7 +44,7 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         const isAuthenticated = localStorage.getItem('isAuthenticated');
         if (!isAuthenticated) {
-            next('/login');
+            next('/auth/login');
         } else {
             next();
         }

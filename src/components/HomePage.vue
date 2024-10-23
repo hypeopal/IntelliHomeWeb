@@ -68,7 +68,7 @@ export default {
     handleLogout() {
       localStorage.removeItem('isAuthenticated');
       localStorage.removeItem('username');
-      this.$router.push('/login');
+      this.$router.push('/auth/login');
     },
     updateDate() {
       const today = new Date();
