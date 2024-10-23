@@ -22,11 +22,13 @@
       <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
     </div>
   </div>
+  <canvas class="background"></canvas>
 </template>
 
 <script>
 import axios from 'axios';
 import {serverAddress} from "../../global";
+import Particles from '../../node_modules/particlesjs/dist/particles.min.js';
 
 export default {
   data() {
@@ -70,7 +72,27 @@ export default {
       } finally {
         this.isLoading = false;
       }
+    },
+    initParticles() {
+      Particles.init({
+        selector: '.background',
+        color: '#6db8de',
+        maxParticles: 200,
+        sizeVariations: 3,
+        connectParticles: true,
+        minDistance: 55,
+        speed: 0.2,
+      });
     }
+  },
+  mounted() {
+    this.initParticles();
+  },
+  activated() {
+    this.initParticles();
+  },
+  unmounted() {
+    Particles.destroy();
   }
 };
 </script>

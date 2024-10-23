@@ -7,7 +7,7 @@
       </div>
       <div class="date-info">
         当前天气：
-        <img :src="require(`qweather-icons/icons/${weatherIcon}.svg`)" alt="icon"/>
+        <img :src="require(`qweather-icons/icons/${weatherIcon}.svg`)" alt="icon" @click="updateWeather" style="cursor: pointer" title="刷新天气"/>
          {{ weather }} | 当前时间：{{ currentDate }}
         <button @click="handleLogout" class="logout-button">登出</button>
       </div>
@@ -60,10 +60,7 @@ export default {
     };
   },
   async created() {
-    // const cityId = await getCityId('成都');
-    // const weatherNow = await getWeatherNow(cityId);
-    // this.weather = `${weatherNow.weather} ${weatherNow.temp}°C`;
-    // this.weatherIcon = `${weatherNow.icon}`;
+    this.updateWeather();
     this.updateDate();
     setInterval(this.updateDate, 1000);
   },
@@ -89,6 +86,12 @@ export default {
     toggleSidebar() {
       this.isSidebarVisible = !this.isSidebarVisible;
     },
+    updateWeather() {
+      // const cityId = await getCityId('成都');
+      // const weatherNow = await getWeatherNow(cityId);
+      // this.weather = `${weatherNow.weather} ${weatherNow.temp}°C`;
+      // this.weatherIcon = `${weatherNow.icon}`;
+    }
   }
 };
 </script>
