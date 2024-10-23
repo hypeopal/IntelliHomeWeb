@@ -73,7 +73,7 @@ import {serverAddress} from "../../global";
 export default {
   data() {
     return {
-      message: '',
+      message: '正在加载...',
       houses: [],  // 保存从后端获取的houses数据
       selectedHouseId: null,  // 选中的house_id
       selectedAreaId: null,  // 选中的area_id
@@ -98,7 +98,17 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await axios.get(serverAddress + '/api/posts');
+        const token = localStorage.getItem('token');
+        if(!token) {
+          console.log("无法获取token");
+          this.message = '浏览器异常，请退出后重新登录';
+          return;
+        }
+        const headers ={
+          'Authorization': 'Bearer ' + token,
+        };
+        const response = await axios.get(serverAddress + '/api/my/device', {headers: headers});
+        this.message = '';
         this.houses = response.data.data.houses_devices;
         if (this.houses.length > 0) {
           this.selectedHouseId = this.houses[0].house_id;

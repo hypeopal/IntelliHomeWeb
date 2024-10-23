@@ -2,15 +2,15 @@ import {createRouter, createWebHashHistory} from 'vue-router';
 import LoginPage from '../components/LoginPage.vue';
 import HomePage from '../components/HomePage.vue';
 import SignupPage from '../components/SignupPage.vue';
-import ViewPage1 from "../views/ViewPage1.vue";
-import ViewPage2 from "../views/ViewPage2.vue";
+import OverviewPage from "../views/OverviewPage.vue";
+import ScenePage from "../views/ScenePage.vue";
 import FindPassword from "../components/FindPassword.vue";
-import ViewPage3 from "../views/ViewPage3.vue";
+import DevicePage from "../views/DevicePage.vue";
 import ProfilePage from "../views/ProfilePage.vue";
 import SettingPage from "../views/SettingPage.vue";
 
 const routes = [
-    {path: '/', redirect: '/home/view1'},
+    {path: '/', redirect: '/home/overview'},
     {path: '/login', component: LoginPage},
     {path: '/signup', component: SignupPage},
     {path: '/findpassword', component: FindPassword},
@@ -19,9 +19,9 @@ const routes = [
         component: HomePage,
         meta: {requiresAuth: true},
         children: [
-            {path: 'view1', component: ViewPage1},
-            {path: 'view2', component: ViewPage2},
-            {path: 'view3', component: ViewPage3},
+            {path: 'overview', component: OverviewPage},
+            {path: 'scene', component: ScenePage},
+            {path: 'device', component: DevicePage},
             {path: 'profile', component: ProfilePage},
             {path: 'setting', component: SettingPage},
         ]

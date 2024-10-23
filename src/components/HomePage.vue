@@ -17,13 +17,13 @@
       <aside :class="['sidebar', { 'sidebar-hidden': !isSidebarVisible }]">
         <ul class="menu-functions">
           <li>
-            <router-link to="/home/view1" active-class="active-link"><span class="sidebar-text">View 1</span></router-link>
+            <router-link to="/home/overview" active-class="active-link"><span class="sidebar-text">概览</span></router-link>
           </li>
           <li>
-            <router-link to="/home/view2" active-class="active-link"><span class="sidebar-text">View 2</span></router-link>
+            <router-link to="/home/scene" active-class="active-link"><span class="sidebar-text">场景</span></router-link>
           </li>
           <li>
-            <router-link to="/home/view3" active-class="active-link"><span class="sidebar-text">View 3</span></router-link>
+            <router-link to="/home/device" active-class="active-link"><span class="sidebar-text">设备</span></router-link>
           </li>
         </ul>
         <div class="user-info-section">
