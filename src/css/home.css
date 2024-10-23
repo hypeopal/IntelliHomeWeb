@@ -20,11 +20,9 @@ margin to be zero to avoid flex display bug?
     align-items: center;
     background-color: #16a8f0;
     color: white;
-
-    margin: 5px 5px 5px 5px;
     padding: 10px 20px;
-    font-size: 16px;
-    height: 25px;
+    font-size: 20px;
+    height: 35px;
     border-radius: 5px;
 }
 
@@ -35,7 +33,7 @@ margin to be zero to avoid flex display bug?
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
     font-family: 'Arial', sans-serif;
     color: white;
@@ -49,12 +47,10 @@ margin to be zero to avoid flex display bug?
 .toggle-sidebar-btn {
     background: none;
     border: none;
-    font-size: 30px;
+    font-size: 35px;
     color: white;
     cursor: pointer;
     margin-left: -3px;
-    margin-right: 0;
-    padding: 0;
 }
 
 .content-wrapper {
@@ -65,8 +61,8 @@ margin to be zero to avoid flex display bug?
 
 .main-content {
     flex: 1;
-    padding: 20px;
-
+    padding: 30px;
+    margin-top: -10px;
 }
 
 .user-info-section {
@@ -80,12 +76,12 @@ margin to be zero to avoid flex display bug?
 }
 
 .user-info {
-    margin: 0;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 25px;
+    margin-bottom: 5px;
 }
 
 .menu-divider {
@@ -94,11 +90,6 @@ margin to be zero to avoid flex display bug?
     width: 100%;
 }
 
-
-/*.menu-options li {*/
-
-/*}*/
-
 .logout-button {
     background-color: white;
     color: #16a8f0;
@@ -106,7 +97,7 @@ margin to be zero to avoid flex display bug?
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 18px;
     margin-left: 3px;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -118,12 +109,10 @@ margin to be zero to avoid flex display bug?
 
 .date-info img {
     filter: invert(100%) brightness(100%);
-    margin-bottom: -2.5px;
 }
 
-
 .sidebar {
-    width: 150px;
+    width: 180px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -136,8 +125,6 @@ margin to be zero to avoid flex display bug?
 }
 
 .sidebar-hidden {
-    width: 0;
-    padding: 0;
     overflow: hidden;
 }
 
@@ -150,9 +137,8 @@ margin to be zero to avoid flex display bug?
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 150px;
+    height: 180px;
     list-style-type: none;
-
     margin-top: 20px;
 }
 
@@ -160,7 +146,8 @@ margin to be zero to avoid flex display bug?
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
+    height: 55px;
+    font-size: 18px;
 }
 
 .sidebar a {
@@ -200,8 +187,6 @@ margin to be zero to avoid flex display bug?
 .menu-options {
     display: flex;
     flex-direction: column;
-    /*justify-content: space-between;*/
-    /*height: 100px;*/
     margin-top: 12px;
 }
 
@@ -210,8 +195,5 @@ margin to be zero to avoid flex display bug?
     align-items: center;
     justify-content: center;
     height: 50px;
-}
-
-.menu-options a {
-
+    font-size: 18px;
 }

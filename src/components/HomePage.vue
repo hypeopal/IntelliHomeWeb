@@ -33,7 +33,7 @@
             <li><router-link to="/home/setting" active-class="active-link"><span class="sidebar-text">设置</span></router-link></li>
           </ul>
           <div class="user-info">
-            <img src="https://i.loli.net/2017/08/21/599a521472424.jpg" alt="user" style="height: 35px; border-radius: 50%; margin-right: 5px">
+            <img src="https://i.loli.net/2017/08/21/599a521472424.jpg" alt="user" style="height: 40px; border-radius: 50%; margin-right: 5px">
             {{ currentUser }}
           </div>
         </div>

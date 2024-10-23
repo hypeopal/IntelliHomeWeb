@@ -152,10 +152,11 @@ export default {
 <style scoped>
 .chart {
   width: 40%;
-  height: 220px;
+  height: 240px;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 10px 10px 0;
+  margin-top: 5px;
 }
 </style>

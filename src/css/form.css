@@ -6,7 +6,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     transition: background-color 0.3s ease;
 }
 
@@ -33,14 +33,14 @@
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
-    width: 400px;
+    width: 450px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     animation: slideIn 0.3s ease;
 }
 
 .modal-content h2 {
     margin-top: 0;
-    font-size: 24px;
+    font-size: 28px;
     color: #333;
 }
 
@@ -62,7 +62,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 20px;
     transition: border-color 0.3s ease;
 }
 
@@ -85,7 +85,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     transition: background-color 0.3s ease;
 }
 

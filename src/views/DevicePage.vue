@@ -1,12 +1,12 @@
 <template>
   <div class="app-container">
-    <h1 class="title">Smart Home Devices</h1>
+    <h1 class="title">智能家居设备</h1>
 
     <!-- 横向排列的菜单选择 -->
     <div class="selectors">
       <!-- 菜单选择 House -->
       <div class="select-container" v-if="houses.length > 0">
-        <label for="house-select">Select House:</label>
+        <label for="house-select">当前家庭:</label>
         <select id="house-select" v-model="selectedHouseId" @change="onHouseChange">
           <option v-for="house in houses" :key="house.house_id" :value="house.house_id">
             {{ house.house_name }}
@@ -16,7 +16,7 @@
 
       <!-- 菜单选择 Area -->
       <div class="select-container" v-if="selectedHouse && selectedHouse.areas_devices.length > 0">
-        <label for="area-select">Select Area:</label>
+        <label for="area-select">当前区域:</label>
         <select id="area-select" v-model="selectedAreaId" @change="onAreaChange">
           <option v-for="area in selectedHouse.areas_devices" :key="area.area_id" :value="area.area_id">
             {{ area.area_name }}
@@ -27,7 +27,7 @@
 
     <!-- 设备列表展示 -->
     <div class="devices-section" v-if="selectedArea && selectedArea.devices.length > 0">
-      <h2>Devices in {{ selectedArea.area_name }}:</h2>
+      <h2>{{ selectedArea.area_name }}的设备:</h2>
       <div class="devices-container">
         <div class="device-item" v-for="device in selectedArea.devices" :key="device.device_id" @click="openDeviceControl(device)">
           <h3>{{ device.device_name }}</h3>

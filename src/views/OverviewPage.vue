@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h2>View 1</h2>
-    <p>这是 View 1 的内容。</p>
+    <h2>概览</h2>
   </div>
   <div>
     <weather-chart/>

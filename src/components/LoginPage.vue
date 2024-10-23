@@ -2,7 +2,7 @@
   <div class="login-page">
     <div class="login-logo">Intelli Home</div>
     <div class="login">
-      <h2 style="text-align: center">登录</h2>
+      <h2 style="text-align: center; font-size: 30px">登录</h2>
       <form @submit.prevent="handleLogin">
         <div class="input-group">
           <label for="username" class="login-label">用户名：</label>
@@ -14,7 +14,7 @@
         </div>
         <button type="submit" class="login-button" :disabled="isLoading">登录</button>
       </form>
-      <div>
+      <div style="font-size: 20px">
         <span>没有账号？</span>
         <router-link to="/signup">立即注册</router-link>
         <router-link to="/findpassword" style="margin-left: 140px">找回密码</router-link>
@@ -77,23 +77,23 @@ export default {
       Particles.init({
         selector: '.background',
         color: '#6db8de',
-        maxParticles: 200,
+        maxParticles: 250,
         sizeVariations: 3,
         connectParticles: true,
-        minDistance: 55,
+        minDistance: 60,
         speed: 0.2,
       });
     }
   },
-  mounted() {
-    this.initParticles();
-  },
-  activated() {
-    this.initParticles();
-  },
-  unmounted() {
-    Particles.destroy();
-  }
+  // mounted() {
+  //   this.initParticles();
+  // },
+  // activated() {
+  //   this.initParticles();
+  // },
+  // unmounted() {
+  //   Particles.destroy();
+  // }
 };
 </script>
 
