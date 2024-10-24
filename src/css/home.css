@@ -111,6 +111,10 @@ margin to be zero to avoid flex display bug?
     filter: invert(100%) brightness(100%);
 }
 
+.date-info img:hover {
+    filter: invert(100%) brightness(50%);
+}
+
 .sidebar {
     width: 180px;
     display: flex;

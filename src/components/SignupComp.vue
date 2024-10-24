@@ -54,7 +54,7 @@ export default {
 
           if (response.data.message === "success") {
             alert('注册成功, 请登录');
-            this.$router.push('/login');
+            this.$router.push('/auth/login');
           } else {
             this.errorMessage = response.data.message;
           }

@@ -47,6 +47,8 @@
 
 <script>
 //import {getCityId, getWeatherNow} from "@/js/GetWeather";
+//import axios from "axios";
+//import {serverAddress} from "../../global";
 
 export default {
   name: 'HomePage',
@@ -60,6 +62,16 @@ export default {
     };
   },
   async created() {
+    // try {
+    //   await axios.get(serverAddress + 'api/auth', {
+    //     headers: {
+    //       'Authorization': 'Bearer ' + localStorage.getItem('token'),
+    //     }
+    //   });
+    // } catch (error) {
+    //   alert("登录过期，请重新登录");
+    //   this.handleLogout();
+    // }
     this.updateWeather();
     this.updateDate();
     setInterval(this.updateDate, 1000);

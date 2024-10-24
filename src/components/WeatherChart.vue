@@ -47,13 +47,19 @@ export default {
       const chart = echarts.init(this.$refs.weatherChart);
       const option = {
         title: {
-          text: `${this.City}气温 `
+          text: `${this.City}气温 `,
+          textStyle: {
+            fontSize: 20,
+          }
         },
         tooltip: {
           trigger: 'axis'
         },
         legend: {
           bottom: 15,
+          textStyle: {
+            fontSize: 15,
+          }
         },
         toolbox: {
           show: true,
@@ -75,6 +81,9 @@ export default {
         yAxis: {
           type: 'value',
           name: '温度',
+          min: function(value) {
+            return value.min - 3;
+          },
           axisLabel: {
             formatter: '{value} °C'
           }
@@ -151,12 +160,12 @@ export default {
 
 <style scoped>
 .chart {
-  width: 40%;
+  width: 30%;
   height: 240px;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 10px 10px 0;
+  padding: 15px 15px 0;
   margin-top: 5px;
 }
 </style>
